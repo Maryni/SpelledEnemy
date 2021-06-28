@@ -5,15 +5,15 @@ public class Enemies : MonoBehaviour
 {
     #region public variables
 
-    public EnemyConstrucor EnemyConstrucor => enemyConstrucor;
+    //public Enemy Enemy => enemy;
 
     #endregion public variables
 
     #region private variables
 
-    [SerializeField] private List<EnemyConstrucor> listEnemies = new List<EnemyConstrucor>();
+    [SerializeField] private List<Enemy> listEnemies = new List<Enemy>();
     [SerializeField] private List<EnemyStats> listEnemyStats = new List<EnemyStats>();
-    private EnemyConstrucor enemyConstrucor;
+    private Enemy enemy;
 
     #endregion private variables
 
@@ -22,13 +22,16 @@ public class Enemies : MonoBehaviour
 
     public void AddRandomEnemy()
     {
-        enemyConstrucor = new EnemyConstrucor();
+        enemy = new Enemy("Bartolomeo");
         AddToListEnemies();
     }
     public void AddToListEnemyStats(GameObject box)
     {
         var temp = box.GetComponent<EnemyStats>();
-        listEnemyStats.Add(temp);
+        if(temp!= null)
+        {
+            listEnemyStats.Add(temp);
+        }
     }
 
     #endregion public void
@@ -37,26 +40,26 @@ public class Enemies : MonoBehaviour
 
     private void AddToListEnemies()
     {
-        listEnemies.Add(enemyConstrucor);
+        listEnemies.Add(enemy);
     }
 
     #endregion private void
 
     #region GetEnemy
 
-    public EnemyConstrucor GetEnemy(int index)
+    public Enemy GetEnemyByIndex(int index)
     {
         return listEnemies[index];
     }
-    public EnemyConstrucor GetEnemyLastIndex()
+    public Enemy GetEnemyAtLastIndex()
     {
-        return listEnemies[listEnemies.Count];
+        return listEnemies[listEnemies.Count-1];
     }
-    public EnemyConstrucor GetEnemyFirstIndex()
+    public Enemy GetEnemyAtFirstIndex()
     {
         return listEnemies[0];
     }
-    public EnemyConstrucor GetEnemy(string name)
+    public Enemy GetEnemy(string name)
     {
         for (int i = 0; i < listEnemies.Count; i++)
         {
@@ -65,7 +68,7 @@ public class Enemies : MonoBehaviour
                 return listEnemies[i];
             }
         }
-        throw new System.Exception("Don't have this name into listEnemies");
+        throw new System.Exception($"Don't have this enemy with that name - {name} into listEnemies");
     }
 
     #endregion GetEnemy
