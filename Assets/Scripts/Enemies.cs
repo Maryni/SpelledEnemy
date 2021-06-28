@@ -1,24 +1,46 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemies : MonoBehaviour
 {
     #region public variables
 
-    public List<EnemyConstrucor> listEnemies = new List<EnemyConstrucor>();
+    public EnemyConstrucor EnemyConstrucor => enemyConstrucor;
 
     #endregion public variables
 
     #region private variables
 
-
+    [SerializeField] private List<EnemyConstrucor> listEnemies = new List<EnemyConstrucor>();
+    [SerializeField] private List<EnemyStats> listEnemyStats = new List<EnemyStats>();
+    private EnemyConstrucor enemyConstrucor;
 
     #endregion private variables
 
-    public void SetEnemy()
+
+    #region public void
+
+    public void AddRandomEnemy()
     {
-        listEnemies.Add(new EnemyConstrucor());
+        enemyConstrucor = new EnemyConstrucor();
+        AddToListEnemies();
     }
+    public void AddToListEnemyStats(GameObject box)
+    {
+        var temp = box.GetComponent<EnemyStats>();
+        listEnemyStats.Add(temp);
+    }
+
+    #endregion public void
+
+    #region private void
+
+    private void AddToListEnemies()
+    {
+        listEnemies.Add(enemyConstrucor);
+    }
+
+    #endregion private void
 
     #region GetEnemy
 

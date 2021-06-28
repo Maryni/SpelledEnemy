@@ -1,13 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class ManagerEnemy : MonoBehaviour
 {
-    private Enemy enemy;
+    [SerializeField] private GameObject box;
+    [SerializeField] private Transform plane;
+    [SerializeField] private GameObject[] enemies;
+
+    private Enemies enemy = new Enemies();
 
     private void Start()
     {
-        enemy.SetEnemy();
+        //enemy.AddRandomEnemy();
+        //enemy.EnemyConstrucor.Cast();
+        InitalizeBoxes(4);
+    }
+
+    public void InitalizeBoxes(int count)
+    {
+        enemies = new GameObject[count];
+        for (int i = 0; i < count; i++)
+        {
+            Instantiate(box.transform, plane, true);
+            enemies[i] = plane.GetChild(i).gameObject;
+            //enemies[i].AddRandomEnemy();
+            //enemies[i].EnemyConstrucor.Cast();
+        }
+
     }
 }

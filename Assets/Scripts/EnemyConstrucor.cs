@@ -51,7 +51,11 @@ public class EnemyConstrucor : MonoBehaviour, ISpell, IEnemy
 
     public void GetNameSpell()
     {
-        nameSpell = nameSpells[Random.Range(0,8)] + Random.Range(1,5);
+        nameSpell = ""+nameSpells[Random.Range(0,8)] + Random.Range(1,5);
+    }
+    public void WhoIam()
+    {
+        print("I am [" + gameObject.name + "] my name is " + Name);
     }
 
     #endregion public void
