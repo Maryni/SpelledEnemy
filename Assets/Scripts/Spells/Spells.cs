@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Interface;
 using UnityEngine;
 
-public class Spells :  ISpell
+public class Spell :  ISpell
 {
     #region private variables
 
@@ -30,7 +30,7 @@ public class Spells :  ISpell
 
     #region Constructors
 
-    public Spells(float castTimeSpell = 1f, float rangeSpell = 1f, int powerSpell = 1)
+    public Spell(float castTimeSpell = 1f, float rangeSpell = 1f, int powerSpell = 1)
     {
         if (castTimeSpell != rangeSpell || (int)castTimeSpell != powerSpell || (int)rangeSpell != powerSpell)
         {
@@ -56,7 +56,7 @@ public class Spells :  ISpell
     {
         particleSystemSpell.Pause();
     }
-    public void GetParticalSystem(ParticleSystem particleSystemSpell)
+    public void SetParticalSystem(ParticleSystem particleSystemSpell)
     {
         this.particleSystemSpell = particleSystemSpell;
     }

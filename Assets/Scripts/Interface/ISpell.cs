@@ -10,6 +10,6 @@ namespace Assets.Scripts.Interface
      int Power { get; }
      void Cast();
      void Uncast();
-     void GetParticalSystem(ParticleSystem particleSystemSpell);
+     void SetParticalSystem(ParticleSystem particleSystemSpell);
     }         
 }

@@ -459,6 +459,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 850831504, guid: 50d60a824499cd34698d42e72d6f08da, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1283610787158432036, guid: 50d60a824499cd34698d42e72d6f08da,
         type: 3}
       propertyPath: enemies

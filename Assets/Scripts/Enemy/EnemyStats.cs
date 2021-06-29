@@ -25,7 +25,7 @@ public class EnemyStats : MonoBehaviour
         enemies = GameObject.Find("GameManager").GetComponent<Enemies>();
         enemies.AddRandomEnemy();
         enemyConstrucorStats = enemies.GetEnemyAtLastIndex();
-        enemyConstrucorStats.Spell.GetParticalSystem(particleSystem);
+        enemyConstrucorStats.Spell.SetParticalSystem(particleSystem);
         enemyConstrucorStats.Spell.Uncast();
         
     }

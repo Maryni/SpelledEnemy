@@ -22,7 +22,7 @@ public class Enemy : IEnemy
     public Enemy(string nameConstructor)
     {
         name = nameConstructor;
-        spell = new Spells();
+        spell = new Spell();
 
     }
 
@@ -35,7 +35,7 @@ public class Enemy : IEnemy
         Debug.Log("I am [" + name + "] my name is [" + Name+"]");
         Debug.Log("My spellName is ["+spell.NameSpell+"]");
     }
-    public void GetSpell(ISpell spell)
+    public void SetSpell(ISpell spell)
     {
         this.spell = spell;
     }

@@ -16,8 +16,6 @@ public class ManagerEnemy : MonoBehaviour
 
     [SerializeField] private EnemyStats currentEnemy;
 
-    private RaycastHit[] raycastHit;
-
     #endregion private variables
 
    
@@ -38,8 +36,7 @@ public class ManagerEnemy : MonoBehaviour
                 SetRandomPoint();
                 if(IsCanPlaceNearbyPoint())
                 {
-                    //print(i);
-                    Instantiate(box.transform, pointToSpawnTransform, true);
+                    Instantiate(box.transform, pointToSpawnTransform.position,Quaternion.identity);
                     SetChindToPlaneFromSpawnPoint(i);
                 }
                 else
@@ -62,36 +59,17 @@ public class ManagerEnemy : MonoBehaviour
     }
     private bool IsCanPlaceNearbyPoint()
     {
-        Debug.DrawRay(pointToSpawnTransform.position, Vector3.one *radius, Color.green);
+        var arraySphereAll = Physics.OverlapSphere(pointToSpawn, radius);
 
-        var arraySphereAll = Physics.SphereCastAll(pointToSpawn, radius, Vector3.zero);
-        
-        foreach( var item in arraySphereAll)
+        foreach(var item in arraySphereAll)
         {
-            print(item.collider);
+            var stats = item.GetComponent<EnemyStats>();
+            if (stats != null)
+            {
+                return false;
+            }
         }
-        print("L = "+arraySphereAll.Length);
         return true;
-    //    {
-    //        if (raycastHit.transform.tag == "Plane")
-    //        {
-    //            print(raycastHit.collider);
-    //            return true;
-    //        }
-    //        if (raycastHit.transform.tag == "Box")
-    //        {
-    //            print(raycastHit.collider);
-    //            return false;
-    //        }
-    //    }
-
-    //    if (raycastHit.collider == null )
-    //    {
-    //        print(raycastHit.collider);
-    //        return true;
-    //    }
-    //    print(raycastHit.collider);
-    //    return false;       
     }
 
     private void SetChindToPlaneFromSpawnPoint(int index)
@@ -99,11 +77,6 @@ public class ManagerEnemy : MonoBehaviour
         enemies[index] = pointToSpawnTransform.transform.GetChild(0).gameObject;
         enemies[index].transform.parent = plane.transform;
         enemies[index].transform.position = pointToSpawnTransform.localPosition;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(pointToSpawn, radius);
     }
 
     #endregion public void
