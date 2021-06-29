@@ -82,10 +82,5 @@ public class Spells :  ISpell
 
 
     #endregion private void
-
-
-
-
-
-
+    
 }

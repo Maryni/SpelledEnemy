@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem particleSystem;
+    #region private variables
+
+    [SerializeField] private new ParticleSystem particleSystem;
     [SerializeField] private Enemy enemyConstrucorStats;
     [SerializeField] private Enemies enemies;
+
+    #endregion private variables
+
+    #region propertys
+
     public Enemy Enemy => enemyConstrucorStats;
+
+    #endregion propertys
+
+    #region private void
 
     private void Start()
     {
@@ -18,4 +29,7 @@ public class EnemyStats : MonoBehaviour
         enemyConstrucorStats.Spell.Uncast();
         
     }
+
+    #endregion private void
+
 }

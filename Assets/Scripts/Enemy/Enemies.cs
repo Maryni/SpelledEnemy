@@ -17,7 +17,6 @@ public class Enemies : MonoBehaviour
 
     #endregion private variables
 
-
     #region public void
 
     public void AddRandomEnemy()
@@ -72,4 +71,5 @@ public class Enemies : MonoBehaviour
     }
 
     #endregion GetEnemy
+
 }

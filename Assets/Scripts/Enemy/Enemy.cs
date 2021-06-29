@@ -47,5 +47,4 @@ public class Enemy : IEnemy
 
     #endregion private void
 
-
 }
