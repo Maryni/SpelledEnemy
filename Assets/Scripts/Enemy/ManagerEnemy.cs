@@ -16,7 +16,7 @@ public class ManagerEnemy : MonoBehaviour
 
     [SerializeField] private EnemyStats currentEnemy;
 
-    private RaycastHit raycastHit;
+    private RaycastHit[] raycastHit;
 
     #endregion private variables
 
@@ -38,6 +38,7 @@ public class ManagerEnemy : MonoBehaviour
                 SetRandomPoint();
                 if(IsCanPlaceNearbyPoint())
                 {
+                    //print(i);
                     Instantiate(box.transform, pointToSpawnTransform, true);
                     SetChindToPlaneFromSpawnPoint(i);
                 }
@@ -61,33 +62,48 @@ public class ManagerEnemy : MonoBehaviour
     }
     private bool IsCanPlaceNearbyPoint()
     {
-        //Debug.DrawRay(pointToSpawn, Vector3.up *radius, Color.green);
+        Debug.DrawRay(pointToSpawnTransform.position, Vector3.one *radius, Color.green);
 
-        if (Physics.SphereCast(pointToSpawn, radius, Vector3.forward, out raycastHit))
+        var arraySphereAll = Physics.SphereCastAll(pointToSpawn, radius, Vector3.zero);
+        
+        foreach( var item in arraySphereAll)
         {
-            print(raycastHit.collider.gameObject.name);
-            if (raycastHit.collider.gameObject.name == "Plane")
-            {
-                return true;
-            }
-            if (raycastHit.collider.gameObject.name == "Box(Clone)")
-            {
-                return false;
-            }
+            print(item.collider);
         }
-        if (raycastHit.collider == null )
-        {
-            return true;
-        }
+        print("L = "+arraySphereAll.Length);
+        return true;
+    //    {
+    //        if (raycastHit.transform.tag == "Plane")
+    //        {
+    //            print(raycastHit.collider);
+    //            return true;
+    //        }
+    //        if (raycastHit.transform.tag == "Box")
+    //        {
+    //            print(raycastHit.collider);
+    //            return false;
+    //        }
+    //    }
 
-        return false;       
+    //    if (raycastHit.collider == null )
+    //    {
+    //        print(raycastHit.collider);
+    //        return true;
+    //    }
+    //    print(raycastHit.collider);
+    //    return false;       
     }
 
     private void SetChindToPlaneFromSpawnPoint(int index)
     {
         enemies[index] = pointToSpawnTransform.transform.GetChild(0).gameObject;
         enemies[index].transform.parent = plane.transform;
-        enemies[index].transform.localPosition = pointToSpawnTransform.localPosition;
+        enemies[index].transform.position = pointToSpawnTransform.localPosition;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(pointToSpawn, radius);
     }
 
     #endregion public void

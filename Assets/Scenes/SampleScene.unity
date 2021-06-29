@@ -414,7 +414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575246338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.65153766, y: -1.807062, z: -6.824276}
+  m_LocalPosition: {x: -4, y: -1.807062, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -446,7 +446,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083134968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.28086525, y: -7.465816, z: -5.691343}
+  m_LocalPosition: {x: 0.28086525, y: 0, z: -5.691343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -569,6 +569,11 @@ PrefabInstance:
     - target: {fileID: 1185572671314494762, guid: fe2043aeb61381e4494553891250888a,
         type: 3}
       propertyPath: m_Name
+      value: Plane
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185572671314494762, guid: fe2043aeb61381e4494553891250888a,
+        type: 3}
+      propertyPath: m_TagString
       value: Plane
       objectReference: {fileID: 0}
     - target: {fileID: 8587368467714115056, guid: fe2043aeb61381e4494553891250888a,
