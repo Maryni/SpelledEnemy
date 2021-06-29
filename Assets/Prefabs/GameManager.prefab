@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7735191405709765536}
-  - component: {fileID: 7735191405709765539}
   - component: {fileID: 2083134969}
   - component: {fileID: 2083134970}
   m_Layer: 0
@@ -33,19 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7735191405709765539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7735191405709765538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b12079081ca3d3e4ca6bf332385a63ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleSystem: {fileID: 0}
 --- !u!114 &2083134969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582884e695aaa98418a701d135e11649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listEnemies: []
   listEnemyStats: []
 --- !u!114 &2083134970
 MonoBehaviour:
@@ -72,6 +57,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e4400b82966344aae0c5fff678bd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 0}
   box: {fileID: 4706558191278041416, guid: 50d60a824499cd34698d42e72d6f08da, type: 3}
-  plane: {fileID: 1185572671314494762, guid: fe2043aeb61381e4494553891250888a, type: 3}
-  enemies: []
+  enemiesParent: {fileID: 0}
+  pointToSpawn: {x: 0, y: 0, z: 0}
+  radius: 0
+  countSpawn: 0

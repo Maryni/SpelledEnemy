@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class GroundEnemy : Enemy
 {
-    
-    public GroundEnemy(string name) :base(name)
+    public GroundEnemy(string name) : base(name)
     {
-
     }
 }

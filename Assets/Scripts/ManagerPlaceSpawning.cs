@@ -6,15 +6,9 @@ public class ManagerPlaceSpawning : MonoBehaviour
 {
     #region private variables
 
-
-
     #endregion private variables
 
     #region private void
 
-
-
     #endregion private void
-
-
 }

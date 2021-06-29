@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Interface;
 using UnityEngine;
 
-public class Spells :  ISpell
+public class Spell : MonoBehaviour, ISpell
 {
     #region private variables
 
@@ -15,7 +15,7 @@ public class Spells :  ISpell
 
     #region arrays
 
-    private string[] nameSpells = { "Fire", "Water", "Wind", "Earth", "Divine", "Dark", "Nature", "Poison" };
+    private string[] nameSpells = {"Fire", "Water", "Wind", "Earth", "Divine", "Dark", "Nature", "Poison"};
 
     #endregion arrays
 
@@ -30,18 +30,16 @@ public class Spells :  ISpell
 
     #region Constructors
 
-    public Spells(float castTimeSpell = 1f, float rangeSpell = 1f, int powerSpell = 1)
+    public Spell()
     {
-        if (castTimeSpell != rangeSpell || (int)castTimeSpell != powerSpell || (int)rangeSpell != powerSpell)
-        {
-            castTime = castTimeSpell;
-            range = rangeSpell;
-            power = powerSpell;
-        }
-        else
-        {
-            SetSpell();
-        }
+        SetSpell();
+    }
+
+    public Spell(float castTimeSpell, float rangeSpell, int powerSpell)
+    {
+        castTime = castTimeSpell;
+        range = rangeSpell;
+        power = powerSpell;
     }
 
     #endregion Constructors
@@ -52,16 +50,18 @@ public class Spells :  ISpell
     {
         particleSystemSpell.Play();
     }
+
     public void Uncast()
     {
         particleSystemSpell.Pause();
     }
+
     public void GetParticalSystem(ParticleSystem particleSystemSpell)
     {
         this.particleSystemSpell = particleSystemSpell;
     }
 
-    #endregion public void 
+    #endregion public void
 
     #region private void
 
@@ -69,6 +69,7 @@ public class Spells :  ISpell
     {
         nameSpell = "" + nameSpells[Random.Range(0, 8)] + Random.Range(1, 5);
     }
+
     private void SetSpell()
     {
         SetNameSpell();
@@ -80,7 +81,10 @@ public class Spells :  ISpell
             power = Random.Range(1, 101);
     }
 
-
     #endregion private void
-    
+
+    public void Init()
+    {
+        SetSpell();
+    }
 }

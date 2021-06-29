@@ -27,9 +27,7 @@ public class EnemyStats : MonoBehaviour
         enemyConstrucorStats = enemies.GetEnemyAtLastIndex();
         enemyConstrucorStats.Spell.GetParticalSystem(particleSystem);
         enemyConstrucorStats.Spell.Uncast();
-        
     }
 
     #endregion private void
-
 }

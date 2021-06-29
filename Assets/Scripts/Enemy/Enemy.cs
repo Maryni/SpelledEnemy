@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Interface;
+﻿using System;
+using Assets.Scripts.Interface;
 using UnityEngine;
 
 public class Enemy : IEnemy
@@ -10,32 +11,33 @@ public class Enemy : IEnemy
 
     #endregion private variables
 
-    #region propertys
+    #region properties
 
     public ISpell Spell => spell;
     public string Name => name;
 
-    #endregion propertys
+    #endregion properties
 
     #region Conctructor
 
     public Enemy(string nameConstructor)
     {
         name = nameConstructor;
-        spell = new Spells();
-
+        spell = new GameObject().AddComponent<Spell>();
+        spell.Init();
     }
 
     #endregion Conctructor
 
     #region public void
 
-    public void WhoIam()
+    public void WhoIam() //лишнее убрать
     {
-        Debug.Log("I am [" + name + "] my name is [" + Name+"]");
-        Debug.Log("My spellName is ["+spell.NameSpell+"]");
+        Debug.Log("I am [" + name + "] my name is [" + Name + "]");
+        Debug.Log("My spellName is [" + spell.NameSpell + "]");
     }
-    public void GetSpell(ISpell spell)
+
+    public void GetSpell(ISpell spell) //поменять на сет
     {
         this.spell = spell;
     }
@@ -44,7 +46,5 @@ public class Enemy : IEnemy
 
     #region private void
 
-
     #endregion private void
-
 }

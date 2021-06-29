@@ -24,10 +24,11 @@ public class Enemies : MonoBehaviour
         enemy = new Enemy("Bartolomeo");
         AddToListEnemies();
     }
+
     public void AddToListEnemyStats(GameObject box)
     {
         var temp = box.GetComponent<EnemyStats>();
-        if(temp!= null)
+        if (temp != null)
         {
             listEnemyStats.Add(temp);
         }
@@ -50,26 +51,29 @@ public class Enemies : MonoBehaviour
     {
         return listEnemies[index];
     }
+
     public Enemy GetEnemyAtLastIndex()
     {
-        return listEnemies[listEnemies.Count-1];
+        return listEnemies[listEnemies.Count - 1];
     }
+
     public Enemy GetEnemyAtFirstIndex()
     {
         return listEnemies[0];
     }
+
     public Enemy GetEnemy(string name)
     {
         for (int i = 0; i < listEnemies.Count; i++)
         {
-            if(name.Equals(listEnemies[i].Name))
+            if (name.Equals(listEnemies[i].Name))
             {
                 return listEnemies[i];
             }
         }
+
         throw new System.Exception($"Don't have this enemy with that name - {name} into listEnemies");
     }
 
     #endregion GetEnemy
-
 }
