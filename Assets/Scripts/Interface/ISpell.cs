@@ -11,5 +11,6 @@ namespace Assets.Scripts.Interface
      void Cast();
      void Uncast();
      void SetParticalSystem(ParticleSystem particleSystemSpell);
+     void Move(Transform target, Transform me);
     }         
 }

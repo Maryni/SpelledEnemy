@@ -13,12 +13,9 @@ public class ManagerEnemy : MonoBehaviour
     [SerializeField] private float radius;
     [SerializeField] private int countSpawn;
 
-
     [SerializeField] private EnemyStats currentEnemy;
 
     #endregion private variables
-
-   
 
     private void Start()
     {
@@ -36,7 +33,8 @@ public class ManagerEnemy : MonoBehaviour
                 SetRandomPoint();
                 if(IsCanPlaceNearbyPoint())
                 {
-                    Instantiate(box.transform, pointToSpawnTransform.position,Quaternion.identity);
+                    var item = Instantiate(box.transform, pointToSpawnTransform.position, Quaternion.identity);
+                    item.transform.parent = pointToSpawnTransform;
                     SetChindToPlaneFromSpawnPoint(i);
                 }
                 else
@@ -60,7 +58,6 @@ public class ManagerEnemy : MonoBehaviour
     private bool IsCanPlaceNearbyPoint()
     {
         var arraySphereAll = Physics.OverlapSphere(pointToSpawn, radius);
-
         foreach(var item in arraySphereAll)
         {
             var stats = item.GetComponent<EnemyStats>();

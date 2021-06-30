@@ -5,7 +5,7 @@ public class Enemies : MonoBehaviour
 {
     #region public variables
 
-    //public Enemy Enemy => enemy;
+    public Enemy Enemy => enemy;
 
     #endregion public variables
 
@@ -30,7 +30,18 @@ public class Enemies : MonoBehaviour
         if(temp!= null)
         {
             listEnemyStats.Add(temp);
+            Enemy.SetMyGameObject(box);
         }
+    }
+
+    public void SetTargetEnemy(GameObject gameObject)
+    {
+        Enemy.SetEnemyTarget(gameObject);
+    }
+
+    public GameObject GetRandomEnemy()
+    {
+        return listEnemies[Random.Range(0, listEnemies.Count)].MyGameObject;
     }
 
     #endregion public void

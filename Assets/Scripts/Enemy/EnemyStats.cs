@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
@@ -9,14 +7,17 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private new ParticleSystem particleSystem;
     [SerializeField] private Enemy enemyConstrucorStats;
     [SerializeField] private Enemies enemies;
+    [SerializeField] private GameObject me;
+
+    [SerializeField] private float timer=5f;
 
     #endregion private variables
 
-    #region propertys
+    #region properties
 
     public Enemy Enemy => enemyConstrucorStats;
 
-    #endregion propertys
+    #endregion properties
 
     #region private void
 
@@ -24,12 +25,24 @@ public class EnemyStats : MonoBehaviour
     {
         enemies = GameObject.Find("GameManager").GetComponent<Enemies>();
         enemies.AddRandomEnemy();
+        enemies.AddToListEnemyStats(me);
         enemyConstrucorStats = enemies.GetEnemyAtLastIndex();
         enemyConstrucorStats.Spell.SetParticalSystem(particleSystem);
-        enemyConstrucorStats.Spell.Uncast();
+        enemyConstrucorStats.Spell.Cast();
+        enemyConstrucorStats.SetEnemyTarget(enemies.GetRandomEnemy());
+        Enemy.Rotate();
+        
+    }
+
+    private void FixedUpdate()
+    {
+        if (timer > 0f)
+        {
+            enemyConstrucorStats.Cast();
+            timer -= 0.1f;
+        }
         
     }
 
     #endregion private void
-
 }

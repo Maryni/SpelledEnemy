@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Interface;
 using UnityEngine;
 
-public class Spell :  ISpell
+public class Spell : ISpell
 {
     #region private variables
 
@@ -15,33 +15,32 @@ public class Spell :  ISpell
 
     #region arrays
 
-    private string[] nameSpells = { "Fire", "Water", "Wind", "Earth", "Divine", "Dark", "Nature", "Poison" };
+    private string[] nameSpells = {"Fire", "Water", "Wind", "Earth", "Divine", "Dark", "Nature", "Poison" };
 
     #endregion arrays
 
-    #region propertys
+    #region properties
 
     public string NameSpell => nameSpell;
     public float CastTime => castTime;
     public float Range => range;
     public int Power => power;
+    public ParticleSystem ParticleSystemSpell => particleSystemSpell;
 
-    #endregion propertys
+    #endregion properties
 
     #region Constructors
 
-    public Spell(float castTimeSpell = 1f, float rangeSpell = 1f, int powerSpell = 1)
+    public Spell()
     {
-        if (castTimeSpell != rangeSpell || (int)castTimeSpell != powerSpell || (int)rangeSpell != powerSpell)
-        {
+        SetSpell();
+    }
+
+    public Spell(float castTimeSpell, float rangeSpell, int powerSpell)
+    {
             castTime = castTimeSpell;
             range = rangeSpell;
             power = powerSpell;
-        }
-        else
-        {
-            SetSpell();
-        }
     }
 
     #endregion Constructors
@@ -52,13 +51,30 @@ public class Spell :  ISpell
     {
         particleSystemSpell.Play();
     }
+
     public void Uncast()
     {
         particleSystemSpell.Pause();
     }
+
     public void SetParticalSystem(ParticleSystem particleSystemSpell)
     {
         this.particleSystemSpell = particleSystemSpell;
+    }
+
+    public void Init()
+    {
+        SetSpell();
+    }
+
+    public void Move(Transform target, Transform me)
+    {
+        var temp = particleSystemSpell.gameObject;
+        var destination = target.position - me.position;
+        destination = Vector3.Normalize(destination);
+        temp.transform.position = new Vector3(temp.transform.position.x + destination.x * .5f,
+                                                    temp.transform.position.y,
+                                                    temp.transform.position.z + destination.z * .5f);
     }
 
     #endregion public void 
