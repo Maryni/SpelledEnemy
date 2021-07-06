@@ -9,7 +9,8 @@ namespace Assets.Scripts.Interface
      float Range { get; }
      int Power { get; }
      void Cast();
-     void Uncast();
+     void PauseCast();
+     void StopCast();
      void SetParticalSystem(ParticleSystem particleSystemSpell);
      void Move(Transform target, Transform me);
     }         

@@ -27,7 +27,6 @@ public class Enemy : IEnemy
     {
         name = nameConstructor;
         spell = new Spell();
-
     }
 
     #endregion Conctructor

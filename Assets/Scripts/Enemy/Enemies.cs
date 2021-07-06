@@ -57,6 +57,11 @@ public class Enemies : MonoBehaviour
 
     #region GetEnemy
 
+    public int GetEnemiesCount()
+    {
+        return listEnemies.Count;
+    }
+
     public Enemy GetEnemyByIndex(int index)
     {
         return listEnemies[index];

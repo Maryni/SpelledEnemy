@@ -15,7 +15,7 @@ public class Spell : ISpell
 
     #region arrays
 
-    private string[] nameSpells = {"Fire", "Water", "Wind", "Earth", "Divine", "Dark", "Nature", "Poison" };
+    private string[] nameSpells = { "Fire", "Water", "Wind", "Earth", "Divine", "Dark", "Nature", "Poison" };
 
     #endregion arrays
 
@@ -38,9 +38,9 @@ public class Spell : ISpell
 
     public Spell(float castTimeSpell, float rangeSpell, int powerSpell)
     {
-            castTime = castTimeSpell;
-            range = rangeSpell;
-            power = powerSpell;
+        castTime = castTimeSpell;
+        range = rangeSpell;
+        power = powerSpell;
     }
 
     #endregion Constructors
@@ -52,9 +52,14 @@ public class Spell : ISpell
         particleSystemSpell.Play();
     }
 
-    public void Uncast()
+    public void PauseCast()
     {
         particleSystemSpell.Pause();
+    }
+
+    public void StopCast()
+    {
+        particleSystemSpell.Stop();
     }
 
     public void SetParticalSystem(ParticleSystem particleSystemSpell)
@@ -98,5 +103,5 @@ public class Spell : ISpell
 
 
     #endregion private void
-    
+
 }
